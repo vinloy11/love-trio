@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Trio ❤️</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+
+    <!-- Экран 1: Приветствие -->
+    <section id="welcome" class="screen active">
+        <div class="hearts-bg">
+            <div class="heart heart-1"></div>
+            <div class="heart heart-2"></div>
+            <div class="heart heart-3"></div>
+            <div class="heart heart-4"></div>
+            <div class="heart heart-5"></div>
+            <div class="heart heart-6"></div>
+            <div class="heart heart-7"></div>
+            <div class="heart heart-8"></div>
+            <div class="heart heart-9"></div>
+            <div class="heart heart-10"></div>
+        </div>
+        
+        <div class="welcome-content">
+            <h1 class="main-title">Love Trio </h1>
+            <h1>🌈🏳️‍🌈</h1>
+            <p class="subtitle">Три сердца, одна любовь ✨</p>
+            
+            <div class="characters-circle">
+                <div class="character">
+                    <div class="character-photo">
+                        <img src="photos/парень1.png" alt="Парень 1" class="character-img">
+                        <div class="character-overlay">
+                            <span class="character-name">Алексей</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="character">
+                    <div class="character-photo">
+                        <img src="photos/парень2.png" alt="Парень 2" class="character-img">
+                        <div class="character-overlay">
+                            <span class="character-name">Михаил</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="character">
+                    <div class="character-photo">
+                        <img src="photos/парень3.png" alt="Парень 3" class="character-img">
+                        <div class="character-overlay">
+                            <span class="character-name">Дмитрий</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="love-counter">
+                <p>Вместе уже <span id="days">0</span> дней, <span id="hours">0</span> часов, <span id="minutes">0</span> минут</p>
+            </div>
+            
+            <button class="next-btn" onclick="nextScreen()">Наша история ❤️</button>
+        </div>
+        
+        <div class="audio-controls">
+            <button id="bgMusicToggle" class="audio-btn">🎵</button>
+
+            <div style="display: flex; gap: 20px; align-items: center; font-family: Arial, sans-serif;">
+
+                <!-- Twitch -->
+                <a href="https://twitch.tv/shtorkfm" target="_blank" 
+                   style="display: flex; align-items: center; text-decoration: none; color: #6441a5; font-weight: bold;">
+                  <!-- Twitch SVG -->
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="#6441a5" style="margin-right: 8px;">
+                    <path d="M2 0L0 4v16h6v4h4l4-4h6l4-4V0H2zm20 14l-3 3h-6l-4 4v-4H4V2h18v12z"/>
+                    <path d="M15 5h2v6h-2V5zm-5 0h2v6H10V5z"/>
+                  </svg>
+                  twitch.tv/shtorkfm
+                </a>
+              
+                <!-- Instagram -->
+                <a href="https://instagram.com/shtorkao" target="_blank"
+                   style="display: flex; align-items: center; text-decoration: none; color: #E4405F; font-weight: bold;">
+                  <!-- Instagram SVG -->
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="#E4405F" style="margin-right: 8px;">
+                    <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.4.4.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.3 1.2.4 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.4-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.5.2-1.2.3-2.4.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.4-.4-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.5-.3-1.2-.4-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.4.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .5-.2 1.2-.3 2.4-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.5.2-1.8.3-.4.1-.7.3-1 .6-.3.3-.5.6-.6 1-.1.3-.2.8-.3 1.8-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.5.3 1.8.1.4.3.7.6 1 .3.3.6.5 1 .6.3.1.8.2 1.8.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.5-.2 1.8-.3.4-.1.7-.3 1-.6.3-.3.5-.6.6-1 .1-.3.2-.8.3-1.8.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.5-.3-1.8-.1-.4-.3-.7-.6-1-.3-.3-.6-.5-1-.6-.3-.1-.8-.2-1.8-.3-1.2-.1-1.6-.1-4.7-.1zm0 3.4a5.6 5.6 0 110 11.2 5.6 5.6 0 010-11.2zm0 1.8a3.8 3.8 0 100 7.6 3.8 3.8 0 000-7.6zm5.8-2.2a1.3 1.3 0 110 2.6 1.3 1.3 0 010-2.6z"/>
+                  </svg>
+                  instagram.com/shtorkao
+                </a>
+              
+              </div>
+        </div>
+    </section>
+
+    <!-- Экран 2: История любви -->
+    <section id="story" class="screen">
+        <div class="story-bg">
+            <div class="floating-sticker">💕</div>
+            <div class="floating-sticker">🤗</div>
+            <div class="floating-sticker">😘</div>
+            <div class="floating-sticker">💖</div>
+        </div>
+        
+        <div class="story-content">
+            <h2>Наша история любви 💕🏳️‍🌈</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Первая встреча</div>
+                    <div class="timeline-content">
+                        <img src="photos/парень1.png" alt="Первая встреча" class="timeline-img">
+                        <p>Три сердца встретились в один прекрасный день...</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Первое приключение</div>
+                    <div class="timeline-content">
+                        <img src="photos/парень2.png" alt="Первое приключение" class="timeline-img">
+                        <p>Вместе мы отправились в незабываемое путешествие...</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Смешные истории</div>
+                    <div class="timeline-content">
+                        <img src="photos/парень3.png" alt="Смешные истории" class="timeline-img">
+                        <p>Каждый день приносит новые поводы для смеха...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="next-btn" onclick="nextScreen()">Играем вместе! 🎮</button>
+        </div>
+    </section>
+
+    <!-- Экран 3: Интерактивная игра -->
+    <section id="game" class="screen">
+        <div class="game-content">
+            <h2>Соедини нас любовью 💖🏳️‍🌈</h2>
+            <p>Соедини всех троих линиями сердечек!</p>
+            
+            <div class="game-area">
+                <div class="game-character" id="char1" data-connected="false">
+                    <img src="photos/парень1.png" alt="Парень 1" class="game-char-img">
+                </div>
+                <div class="game-character" id="char2" data-connected="false">
+                    <img src="photos/парень2.png" alt="Парень 2" class="game-char-img">
+                </div>
+                <div class="game-character" id="char3" data-connected="false">
+                    <img src="photos/парень3.png" alt="Парень 3" class="game-char-img">
+                </div>
+                
+                <canvas id="gameCanvas" width="800" height="600"></canvas>
+            </div>
+            
+            <div class="game-instructions">
+                <p>Кликни на персонажа, затем на другого, чтобы соединить их!</p>
+            </div>
+            
+            <button class="next-btn" onclick="nextScreen()">Смотрим фото! 📸</button>
+        </div>
+    </section>
+
+    <!-- Экран 4: Галерея -->
+    <section id="gallery" class="screen">
+        <div class="gallery-content">
+            <h2>Наши воспоминания 🎭🏳️‍🌈</h2>
+            
+            <div class="gallery-controls">
+                <button id="shuffleBtn" class="gallery-btn">Перемешать 🔀</button>
+            </div>
+            
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item">
+                    <img src="photos/парень1.png" alt="Воспоминание 1" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <p>Наш первый поцелуй 💋</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="photos/парень2.png" alt="Воспоминание 2" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <p>Прогулка под дождем ☔</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="photos/парень3.png" alt="Воспоминание 3" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <p>Вечерний кофе ☕</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="photos/парень1.png" alt="Воспоминание 4" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <p>Пикник в парке 🌳</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="photos/парень2.png" alt="Воспоминание 5" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <p>Танцы до утра 💃</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="photos/парень3.png" alt="Воспоминание 6" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <p>Пляжный отдых 🏖️</p>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="next-btn" onclick="nextScreen()">Финальный аккорд! 🎭</button>
+        </div>
+    </section>
+
+    <!-- Экран 5: Финал -->
+    <section id="finale" class="screen">
+        <div class="finale-bg">
+            <div class="fireworks">
+                <div class="firework"></div>
+                <div class="firework"></div>
+                <div class="firework"></div>
+            </div>
+        </div>
+        
+        <div class="finale-content">
+            <div class="finale-characters">
+                <img src="photos/парень1.png" alt="Парень 1" class="finale-char">
+                <img src="photos/парень2.png" alt="Парень 2" class="finale-char">
+                <img src="photos/парень3.png" alt="Парень 3" class="finale-char">
+            </div>
+            
+            <h2 class="finale-title">Любовь — это мы ❤️🏳️‍🌈</h2>
+            
+            <div class="love-form">
+                <h3>Отправь нам сердечко!</h3>
+                <form id="loveForm">
+                    <input type="text" id="senderName" placeholder="Твое имя" required>
+                    <textarea id="loveMessage" placeholder="Твое пожелание..." required></textarea>
+                    <button type="submit" class="submit-btn">Отправить любовь 💝</button>
+                </form>
+            </div>
+            
+            <button class="restart-btn" onclick="restartSite()">Начать заново 🔄</button>
+        </div>
+    </section>
+
+    <!-- Аудио элементы (заглушки) -->
+    <audio id="bgMusic" loop>
+        <source src="audio/macan.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Навигационные кнопки -->
+    <div class="nav-buttons">
+        <button class="nav-btn active" onclick="goToScreen(0)" title="Приветствие">🏠</button>
+        <button class="nav-btn" onclick="goToScreen(1)" title="История">📖</button>
+        <button class="nav-btn" onclick="goToScreen(2)" title="Игра">🎮</button>
+        <button class="nav-btn" onclick="goToScreen(3)" title="Галерея">📸</button>
+        <button class="nav-btn" onclick="goToScreen(4)" title="Финал">💝</button>
+        <button class="nav-btn" onclick="showRainbow()" title="Радуга">🏳️‍🌈</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Демо-версия: показываем уведомления о заглушках
+        document.addEventListener('DOMContentLoaded', function() {
+            // Скрываем демо-уведомление через 5 секунд
+            setTimeout(() => {
+                const demoNotice = document.querySelector('.demo-notice');
+                if (demoNotice) {
+                    demoNotice.style.opacity = '0';
+                    demoNotice.style.transform = 'translateX(-50%) translateY(-100px)';
+                    demoNotice.style.transition = 'all 0.5s ease';
+                    setTimeout(() => demoNotice.remove(), 500);
+                }
+            }, 5000);
+            
+            // Показываем подсказки при клике на заглушки
+            document.querySelectorAll('.demo-placeholder').forEach(placeholder => {
+                placeholder.addEventListener('click', function() {
+                    const tip = document.createElement('div');
+                    tip.innerHTML = '📸 Замените на реальное фото!';
+                    tip.style.cssText = `
+                        position: fixed;
+                        top: ${event.clientY - 50}px;
+                        left: ${event.clientX}px;
+                        background: linear-gradient(45deg, #ff6b9d, #c44569);
+                        color: white;
+                        padding: 10px 15px;
+                        border-radius: 15px;
+                        font-size: 0.9rem;
+                        font-weight: bold;
+                        z-index: 10000;
+                        pointer-events: none;
+                        animation: tip-fade 2s ease-out forwards;
+                    `;
+                    
+                    document.body.appendChild(tip);
+                    
+                    setTimeout(() => {
+                        tip.remove();
+                    }, 2000);
+                });
+            });
+        });
+        
+        // Добавляем CSS анимацию для подсказок
+        const tipStyle = document.createElement('style');
+        tipStyle.textContent = `
+            @keyframes tip-fade {
+                0% { opacity: 0; transform: scale(0.8); }
+                20% { opacity: 1; transform: scale(1.1); }
+                80% { opacity: 1; transform: scale(1); }
+                100% { opacity: 0; transform: scale(0.9); }
+            }
+        `;
+        document.head.appendChild(tipStyle);
+    </script>
+</body>
+</html>
