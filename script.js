@@ -1,6 +1,6 @@
 // Глобальные переменные
 let currentScreen = 0;
-let bgMusicPlaying = false;
+let bgMusicPlaying = true; // По умолчанию музыка включена
 let gameConnections = [];
 let selectedCharacter = null;
 let startDate = new Date('2024-01-01'); // Дата начала отношений
@@ -10,6 +10,22 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSite();
     updateLoveCounter();
     setInterval(updateLoveCounter, 60000); // Обновляем каждую минуту
+    
+    // Настройка аудио
+    const bgMusic = document.getElementById('bgMusic');
+    if (bgMusic) {
+        bgMusic.addEventListener('canplay', function() {
+            // Музыка готова к воспроизведению
+            console.log('Аудио готово к воспроизведению');
+        });
+        
+        bgMusic.addEventListener('error', function(e) {
+            console.error('Ошибка загрузки аудио:', e);
+            bgMusicPlaying = false;
+            const btn = document.getElementById('bgMusicToggle');
+            if (btn) btn.textContent = '🔇';
+        });
+    }
     
     // Добавляем поддержку клавиатурной навигации
     document.addEventListener('keydown', function(event) {
@@ -73,6 +89,60 @@ function initializeSite() {
     
     // Секретные клики
     document.addEventListener('click', handleSecretClick);
+    
+    // Настройка приветственной модалки
+    const startButton = document.getElementById('startButton');
+    if (startButton) {
+        startButton.addEventListener('click', startSite);
+    }
+    
+    // Настройка видео в модалке
+    const modalVideo = document.querySelector('.modal-video');
+    if (modalVideo) {
+        modalVideo.addEventListener('error', function(e) {
+            console.log('Ошибка загрузки видео:', e);
+            console.log('Проверьте путь к файлу videos/sweet-kiss.mov');
+        });
+        
+        modalVideo.addEventListener('loadeddata', function() {
+            console.log('Видео sweet-kiss.mov успешно загружено');
+        });
+        
+        modalVideo.addEventListener('canplay', function() {
+            console.log('Видео готово к воспроизведению');
+        });
+    }
+}
+
+// Функция запуска сайта
+function startSite() {
+    // Запускаем музыку
+    const bgMusic = document.getElementById('bgMusic');
+    const btn = document.getElementById('bgMusicToggle');
+    
+    if (bgMusic && bgMusic.paused) {
+        bgMusic.play().then(() => {
+            bgMusicPlaying = true;
+            btn.textContent = '🎵';
+            console.log('Музыка запущена при старте сайта');
+        }).catch(e => {
+            console.log('Не удалось запустить музыку:', e);
+            bgMusicPlaying = false;
+            btn.textContent = '🔇';
+        });
+    }
+    
+    // Скрываем модалку
+    const modal = document.getElementById('welcomeModal');
+    if (modal) {
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 800);
+    }
+    
+    // Показываем основной контент
+    document.getElementById('welcome').classList.add('active');
 }
 
 // Навигация между экранами
@@ -148,9 +218,14 @@ function toggleBgMusic() {
         btn.textContent = '🔇';
         bgMusicPlaying = false;
     } else {
-        bgMusic.play().catch(e => console.log('Автовоспроизведение заблокировано'));
-        btn.textContent = '🎵';
-        bgMusicPlaying = true;
+        bgMusic.play().then(() => {
+            bgMusicPlaying = true;
+            btn.textContent = '🎵';
+        }).catch(e => {
+            console.log('Ошибка воспроизведения:', e);
+            bgMusicPlaying = false;
+            btn.textContent = '🔇';
+        });
     }
 }
 

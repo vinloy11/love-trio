@@ -9,10 +9,42 @@
 
 </head>
 <body>
+    <!-- Приветственная модалка -->
+    <div id="welcomeModal" class="welcome-modal active">
+        <div class="modal-content">
+            <div class="modal-hearts">
+                <div class="modal-heart">❤️</div>
+                <div class="modal-heart">💖</div>
+                <div class="modal-heart">💕</div>
+                <div class="modal-heart">💗</div>
+                <div class="modal-heart">💓</div>
+            </div>
+            
+            <h1 class="modal-title">Love Trio ❤️</h1>
+            <h2 class="modal-subtitle">🌈🏳️‍🌈</h2>
+            <p class="modal-text">Три сердца, одна любовь ✨</p>
+            
+            <div class="modal-video-container">
+                <video class="modal-video" autoplay loop muted playsinline>
+                    <source src="videos/sweet-kiss.mov" type="video/mp4">
+                    <source src="videos/sweet-kiss.mov" type="video/quicktime">
+                </video>
+                <div class="video-overlay">
+                    <span class="video-text">Sweet Kiss 💋</span>
+                </div>
+            </div>
+            
+            <button id="startButton" class="start-button">
+                <span class="button-text">Начать путешествие в любовь</span>
+                <span class="button-icon">💝</span>
+            </button>
+            
+        </div>
+    </div>
 
 
     <!-- Экран 1: Приветствие -->
-    <section id="welcome" class="screen active">
+    <section id="welcome" class="screen">
         <div class="hearts-bg">
             <div class="heart heart-1"></div>
             <div class="heart heart-2"></div>
@@ -111,7 +143,7 @@
                 <div class="timeline-item">
                     <div class="timeline-date">Первая встреча</div>
                     <div class="timeline-content">
-                        <img src="photos/парень1.png" alt="Первая встреча" class="timeline-img">
+                        <img src="photos/love7.png" alt="Первая встреча" class="timeline-img">
                         <p>Три сердца встретились в один прекрасный день...</p>
                     </div>
                 </div>
@@ -119,7 +151,7 @@
                 <div class="timeline-item">
                     <div class="timeline-date">Первое приключение</div>
                     <div class="timeline-content">
-                        <img src="photos/парень2.png" alt="Первое приключение" class="timeline-img">
+                        <img src="photos/love9.png" alt="Первое приключение" class="timeline-img">
                         <p>Вместе мы отправились в незабываемое путешествие...</p>
                     </div>
                 </div>
@@ -127,7 +159,7 @@
                 <div class="timeline-item">
                     <div class="timeline-date">Смешные истории</div>
                     <div class="timeline-content">
-                        <img src="photos/парень3.png" alt="Смешные истории" class="timeline-img">
+                        <img src="photos/love8.png" alt="Смешные истории" class="timeline-img">
                         <p>Каждый день приносит новые поводы для смеха...</p>
                     </div>
                 </div>
@@ -176,37 +208,37 @@
             
             <div class="gallery-grid" id="galleryGrid">
                 <div class="gallery-item">
-                    <img src="photos/парень1.png" alt="Воспоминание 1" class="gallery-img">
+                    <img src="photos/love1.png" alt="Воспоминание 1" class="gallery-img">
                     <div class="gallery-overlay">
                         <p>Наш первый поцелуй 💋</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="photos/парень2.png" alt="Воспоминание 2" class="gallery-img">
+                    <img src="photos/love2.png" alt="Воспоминание 2" class="gallery-img">
                     <div class="gallery-overlay">
                         <p>Прогулка под дождем ☔</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="photos/парень3.png" alt="Воспоминание 3" class="gallery-img">
+                    <img src="photos/love5.png" alt="Воспоминание 3" class="gallery-img">
                     <div class="gallery-overlay">
                         <p>Вечерний кофе ☕</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="photos/парень1.png" alt="Воспоминание 4" class="gallery-img">
+                    <img src="photos/love8.png" alt="Воспоминание 4" class="gallery-img">
                     <div class="gallery-overlay">
                         <p>Пикник в парке 🌳</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="photos/парень2.png" alt="Воспоминание 5" class="gallery-img">
+                    <img src="photos/love9.png" alt="Воспоминание 5" class="gallery-img">
                     <div class="gallery-overlay">
                         <p>Танцы до утра 💃</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="photos/парень3.png" alt="Воспоминание 6" class="gallery-img">
+                    <img src="photos/love7.png" alt="Воспоминание 6" class="gallery-img">
                     <div class="gallery-overlay">
                         <p>Пляжный отдых 🏖️</p>
                     </div>
@@ -250,7 +282,7 @@
     </section>
 
     <!-- Аудио элементы (заглушки) -->
-    <audio id="bgMusic" loop>
+    <audio id="bgMusic" loop preload="auto" autoplay>
         <source src="audio/macan.mp3" type="audio/mpeg">
     </audio>
 

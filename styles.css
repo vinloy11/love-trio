@@ -5,6 +5,184 @@
     box-sizing: border-box;
 }
 
+/* Приветственная модалка */
+.welcome-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff6b9d, #c44569, #f8b500, #4ecdc4, #44a08d, #ff6b6b, #feca57, #ff9ff3, #54a0ff, #ff0018, #ff8c00, #ffed00, #008026, #004dff, #760188);
+    background-size: 400% 400%;
+    animation: rainbow-bg 15s ease infinite;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.8s ease;
+}
+
+.welcome-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 40px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.modal-heart {
+    position: absolute;
+    font-size: 2rem;
+    animation: float-heart 6s infinite ease-in-out;
+    opacity: 0.6;
+}
+
+.modal-heart:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.modal-heart:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+.modal-heart:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 2s; }
+.modal-heart:nth-child(4) { bottom: 20%; right: 25%; animation-delay: 3s; }
+.modal-heart:nth-child(5) { top: 50%; left: 50%; animation-delay: 4s; }
+
+@keyframes float-heart {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+    50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+}
+
+.modal-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.modal-subtitle {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.modal-text {
+    font-size: 1.3rem;
+    color: white;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.modal-video-container {
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.modal-video {
+    width: 200px;
+    height: 150px;
+    border-radius: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    object-fit: cover;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.modal-video:hover {
+    transform: scale(1.05);
+    border-color: #ffeb3b;
+    box-shadow: 0 12px 35px rgba(255, 235, 59, 0.4);
+}
+
+.video-overlay {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 8px 16px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.video-text {
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.start-button {
+    background: linear-gradient(45deg, #ff0018, #ff8c00, #ffed00, #008026, #004dff, #760188);
+    background-size: 300% 300%;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0 auto 20px;
+    animation: rainbow-btn 3s ease infinite;
+}
+
+.start-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    animation: rainbow-btn 1s ease infinite;
+}
+
+.start-button:active {
+    transform: translateY(-2px);
+}
+
+.button-text {
+    white-space: nowrap;
+}
+
+.button-icon {
+    font-size: 1.5rem;
+    animation: pulse-icon 2s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(135deg, #ff6b9d, #c44569, #f8b500, #4ecdc4, #44a08d, #ff6b6b, #feca57, #ff9ff3, #54a0ff, #ff0018, #ff8c00, #ffed00, #008026, #004dff, #760188);
@@ -33,6 +211,8 @@ body {
     justify-content: flex-start;
     align-items: center;
     padding: 20px;
+    padding-top: 100px; /* Отступ для аудио контролов */
+    padding-bottom: 120px; /* Отступ для навигации */
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.8s ease;
@@ -297,7 +477,7 @@ body {
 
 .nav-buttons {
     position: fixed;
-    bottom: 20px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -349,23 +529,27 @@ body {
     top: 20px;
     right: 20px;
     z-index: 100;
-    width: 100%;
-    display: flex
-;
-    justify-content: space-between;
-    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+    padding: 0;
 }
 
 .audio-btn {
     background: rgba(255,255,255,0.2);
     border: 1px solid rgba(255,255,255,0.3);
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .audio-btn:hover {
@@ -374,6 +558,8 @@ body {
     animation: rainbow-btn 2s ease infinite;
     transform: scale(1.1);
 }
+
+
 
 /* Экран истории */
 .story-bg {
@@ -956,6 +1142,96 @@ body {
         padding: 20px;
         margin: 20px;
     }
+    
+    /* Адаптивность навигации */
+    .nav-buttons {
+        bottom: 30px;
+        gap: 12px;
+    }
+    
+    .nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    /* Улучшенная адаптивность для аудио контролов и соцсетей */
+    .audio-controls {
+        top: 15px;
+        right: 15px;
+        gap: 12px;
+    }
+    
+    /* Адаптивность модалки */
+    .modal-content {
+        padding: 30px 20px;
+        max-width: 90%;
+    }
+    
+    .modal-title {
+        font-size: 2.5rem;
+    }
+    
+    .modal-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .modal-text {
+        font-size: 1.1rem;
+    }
+    
+    .modal-video {
+        width: 180px;
+        height: 135px;
+    }
+    
+    .start-button {
+        padding: 15px 30px;
+        font-size: 1rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .button-text {
+        white-space: normal;
+    }
+    
+    .modal-heart {
+        font-size: 1.5rem;
+    }
+    
+    .audio-controls > div {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .audio-controls a {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        min-width: 160px;
+        justify-content: center;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+    }
+    
+    .audio-controls a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+    
+    .audio-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+    
+
 }
 
 @media (max-width: 480px) {
@@ -979,5 +1255,197 @@ body {
     .next-btn {
         padding: 12px 25px;
         font-size: 1rem;
+    }
+    
+    /* Адаптивность модалки для маленьких экранов */
+    .modal-content {
+        padding: 25px 15px;
+    }
+    
+    /* Адаптивность экранов для маленьких экранов */
+    .screen {
+        padding-top: 80px;
+        padding-bottom: 100px;
+    }
+    
+    .modal-title {
+        font-size: 2rem;
+    }
+    
+    .modal-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .modal-text {
+        font-size: 1rem;
+    }
+    
+    .modal-video {
+        width: 160px;
+        height: 120px;
+    }
+    
+    .start-button {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* Адаптивность навигации для маленьких экранов */
+    .nav-buttons {
+        bottom: 25px;
+        gap: 10px;
+    }
+    
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    /* Дополнительная адаптивность для очень маленьких экранов */
+    .audio-controls {
+        top: 10px;
+        right: 10px;
+        gap: 10px;
+    }
+    
+    .audio-controls a {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+        min-width: 140px;
+    }
+    
+    .audio-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+
+    
+    /* Специальные стили для очень маленьких экранов */
+    @media (max-width: 360px) {
+        .audio-controls {
+            top: 8px;
+            right: 8px;
+            gap: 8px;
+        }
+        
+        .audio-controls a {
+            font-size: 0.7rem;
+            padding: 4px 6px;
+            min-width: 120px;
+        }
+        
+        .audio-btn {
+            width: 35px;
+            height: 35px;
+            font-size: 1.1rem;
+        }
+        
+
+        
+        /* Модалка для очень маленьких экранов */
+        .modal-content {
+            padding: 20px 10px;
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+        }
+        
+        .modal-subtitle {
+            font-size: 1.2rem;
+        }
+        
+        .modal-text {
+            font-size: 0.9rem;
+        }
+        
+        .modal-video {
+            width: 140px;
+            height: 105px;
+        }
+        
+        .start-button {
+            padding: 10px 15px;
+            font-size: 0.8rem;
+        }
+        
+        /* Экраны для очень маленьких экранов */
+        .screen {
+            padding-top: 70px;
+            padding-bottom: 90px;
+        }
+        
+        /* Навигация для очень маленьких экранов */
+        .nav-buttons {
+            bottom: 20px;
+            gap: 8px;
+        }
+        
+        .nav-btn {
+            width: 35px;
+            height: 35px;
+            font-size: 0.9rem;
+        }
+    }
+    
+    /* Ландшафтная ориентация на мобильных */
+    @media (max-height: 500px) and (orientation: landscape) {
+        .audio-controls {
+            top: 10px;
+            padding: 10px 20px;
+            gap: 15px;
+        }
+        
+        .audio-controls > div {
+            flex-direction: row;
+            gap: 15px;
+        }
+        
+        .audio-controls a {
+            min-width: auto;
+            padding: 6px 12px;
+        }
+        
+        .audio-controls {
+            top: 8px;
+            right: 8px;
+            gap: 8px;
+        }
+        
+        .audio-btn {
+            width: 35px;
+            height: 35px;
+            font-size: 1rem;
+        }
+        
+        .modal-video {
+            width: 150px;
+            height: 112px;
+        }
+        
+        .video-overlay {
+            bottom: -25px;
+        }
+        
+        /* Навигация в ландшафтной ориентации */
+        .nav-buttons {
+            bottom: 15px;
+            gap: 8px;
+        }
+        
+        .nav-btn {
+            width: 35px;
+            height: 35px;
+            font-size: 0.9rem;
+        }
+        
+        /* Экраны в ландшафтной ориентации */
+        .screen {
+            padding-top: 60px;
+            padding-bottom: 80px;
+        }
     }
 }
